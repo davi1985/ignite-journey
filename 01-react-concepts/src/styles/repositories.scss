@@ -1,0 +1,40 @@
+section.repository-list {
+  margin: 40px;
+
+  h1 {
+    margin-bottom: 16px;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      background: rgb(226, 226, 226);
+      max-width: 500px;
+      padding: 16px;
+      border-radius: 4px;
+      color: #333;
+
+      & + li {
+        margin-top: 16px;
+      }
+
+      p {
+        font-size: 14px;
+        margin-top: 8px;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 16px;
+        text-decoration: none;
+        color: #8257e6;
+        transition: filter 0.3s;
+
+        &:hover {
+          filter: brightness(0.7);
+        }
+      }
+    }
+  }
+}

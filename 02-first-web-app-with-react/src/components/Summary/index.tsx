@@ -12,15 +12,15 @@ export function Summary() {
           <p>Entradas</p>
           <img src={incomeImg} alt="Entradas" />
         </header>
-        <strong>R$1.000,00</strong>
+        <strong className="deposit">R$1.000,00</strong>
       </div>
 
       <div>
         <header>
-          <p>Entradas</p>
+          <p>Saidas</p>
           <img src={outcomeImg} alt="Entradas" />
         </header>
-        <strong>R$500,00</strong>
+        <strong className="withdraw">R$500,00</strong>
       </div>
 
       <div className="highlight-background">

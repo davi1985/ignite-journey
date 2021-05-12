@@ -30,6 +30,14 @@ export const Container = styled.div`
       background: var(--green);
       color: white;
     }
+
+    strong.deposit {
+      color: var(--green);
+    }
+
+    strong.withdraw {
+      color: var(--red);
+    }
   }
 
   @media (max-width: 720px) {

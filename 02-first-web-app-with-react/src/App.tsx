@@ -29,6 +29,12 @@ export function App() {
         onRequestClose={handleCloseNewTransactionModal}
       />
 
+      <footer className="footer">
+        &copy;
+        <a href="https://github.com/users/davi1985" target="_blank">
+          Davi Silva
+        </a>
+      </footer>
       <GlobalStyle />
     </>
   )

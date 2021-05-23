@@ -31,7 +31,11 @@ export function App() {
 
       <footer className="footer">
         &copy;
-        <a href="https://github.com/users/davi1985" target="_blank">
+        <a
+          href="https://github.com/users/davi1985"
+          target="_blank"
+          rel="noreferrer"
+        >
           Davi Silva
         </a>
       </footer>

@@ -7,7 +7,10 @@ import { Dashboard } from './components/Dashboard'
 import { GlobalStyle } from './styles/global'
 import { NewTransactionModal } from './components/NewTransactionModal'
 
+import { TransactionProvider } from './TransactionsContext'
+
 Modal.setAppElement('#root')
+
 export function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false)
@@ -19,7 +22,7 @@ export function App() {
     setIsNewTransactionModalOpen(false)
   }
   return (
-    <>
+    <TransactionProvider>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
 
       <Dashboard />
@@ -29,17 +32,7 @@ export function App() {
         onRequestClose={handleCloseNewTransactionModal}
       />
 
-      {/* <footer className="footer">
-        &copy;
-        <a
-          href="https://github.com/users/davi1985"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Davi Silva
-        </a>
-      </footer> */}
       <GlobalStyle />
-    </>
+    </TransactionProvider>
   )
 }

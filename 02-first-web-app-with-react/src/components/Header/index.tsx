@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import Modal from 'react-modal'
-
 import logoImage from '../../assets/logo.svg'
 
 import { Container, Content } from './styles'

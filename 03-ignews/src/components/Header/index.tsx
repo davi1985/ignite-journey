@@ -1,5 +1,8 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
+
+import { SignInButton } from "../SignInButton";
+
 export const Header = () => {
   return (
     <header className={styles.headerContainer}>
@@ -12,6 +15,8 @@ export const Header = () => {
           </a>
           <a href="">Post</a>
         </nav>
+
+        <SignInButton />
       </div>
     </header>
   );

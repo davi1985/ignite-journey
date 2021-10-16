@@ -1,5 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
+
+import styles from "./home.module.scss";
 
 const Home: NextPage = () => {
   return (
@@ -8,9 +11,22 @@ const Home: NextPage = () => {
         <title>Home - ig.news</title>
       </Head>
 
-      <h1>
-        Hello <span>World</span>
-      </h1>
+      <main className={styles.contentContainer}>
+        <section className={styles.hero}>
+          <span>👏 Hey, welcome</span>
+
+          <h1>
+            News about the <span>React</span> world.
+          </h1>
+
+          <p>
+            Get access to all publications <br />
+            for <span>$9.90</span> month
+          </p>
+        </section>
+
+        <img src="/images/avatar.svg" alt="Girl coding" />
+      </main>
     </>
   );
 };

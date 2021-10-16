@@ -48,6 +48,22 @@
       font-weight: bold;
     }
   }
+
+  @media (max-width: 768px) {
+    > span {
+      font-size: 1.2rem;
+    }
+
+    h1 {
+      font-size: 4rem;
+      line-height: 4rem;
+      margin-top: 2rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 // .girlCoding {

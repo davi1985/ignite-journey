@@ -51,7 +51,16 @@
     }
   }
 
+  button {
+    margin-top: 2.5rem;
+  }
+
   @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     > span {
       font-size: 1.2rem;
     }
@@ -60,6 +69,7 @@
       font-size: 4rem;
       line-height: 4rem;
       margin-top: 2rem;
+      max-width: 400px;
     }
 
     p {

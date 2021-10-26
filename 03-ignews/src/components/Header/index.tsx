@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <Image src="/images/logo.svg" alt="ig.news" width={110} height={32} />
+        <img src="/images/logo.svg" alt="ig.news" />
 
         <nav>
           <a href="" className={styles.active}>

@@ -1,6 +1,10 @@
 .headerContainer {
   height: 5rem;
   border-bottom: 1px solid var(--gray-800);
+
+  @media (max-width: 768px) {
+    height: 12rem;
+  }
 }
 
 .headerContent {
@@ -54,5 +58,38 @@
 
   button {
     margin-left: auto;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 12rem;
+    justify-content: center;
+
+    nav {
+      margin-left: 0;
+      height: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        height: 3rem;
+        line-height: 3rem;
+
+        & + a {
+          margin-left: 1rem;
+        }
+      }
+
+      a.active::after {
+        border-radius: 0;
+      }
+    }
+
+    button {
+      margin-top: 1.5rem;
+      margin-left: 0;
+      padding: 1rem;
+    }
   }
 }

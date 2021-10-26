@@ -16,6 +16,8 @@
     img {
       display: none;
     }
+
+    height: calc(100vh - 12rem);
   }
 }
 
@@ -65,12 +67,3 @@
     }
   }
 }
-
-// .girlCoding {
-//   max-width: 520px;
-//   max-height: 520px;
-
-//   @media (max-width: 768px) {
-//     display: none;
-//   }
-// }

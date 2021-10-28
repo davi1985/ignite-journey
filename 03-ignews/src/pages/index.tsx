@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { ReactElement } from "react";
 import { SubscribeButton } from "../components/SubscribeButton";
 import { stripe } from "../service/stripe";
 import { priceFormatter } from "../utils/utils";

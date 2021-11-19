@@ -14,10 +14,6 @@ export default NextAuth({
     }),
   ],
 
-  jwt: {
-    secret: process.env.SIGNING_KEY,
-  },
-
   callbacks: {
     async signIn(user, account, profile) {
       const { email } = user;

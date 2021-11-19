@@ -10,6 +10,8 @@
     "test": "jest --coverage"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^1.21.1",
+    "axios": "^0.24.0",
     "faunadb": "^4.4.1",
     "next": "11.1.2",
     "next-auth": "^3.29.0",

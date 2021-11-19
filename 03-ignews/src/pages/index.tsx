@@ -1,10 +1,10 @@
-import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import { SubscribeButton } from "../components/SubscribeButton";
-import { stripe } from "../service/stripe";
-import { priceFormatter } from "../utils/utils";
+import type { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
+import { SubscribeButton } from '../components/SubscribeButton';
+import { stripe } from '../services/stripe';
+import { priceFormatter } from '../utils/utils';
 
-import styles from "./home.module.scss";
+import styles from './home.module.scss';
 
 type HomeProps = {
   product: {
@@ -45,8 +45,8 @@ const Home: NextPage<HomeProps> = ({ product }: HomeProps) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve("price_1JoogRLqbXf0anamhvmHErQM", {
-    expand: ["product"],
+  const price = await stripe.prices.retrieve('price_1JoogRLqbXf0anamhvmHErQM', {
+    expand: ['product'],
   });
 
   const product = {

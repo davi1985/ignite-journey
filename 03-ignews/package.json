@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch --workers=50%"
+    "test": "jest --watch --maxWorkers=50%"
   },
   "dependencies": {
     "@stripe/stripe-js": "^1.21.1",

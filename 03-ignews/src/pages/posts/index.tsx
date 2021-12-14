@@ -4,7 +4,20 @@ import Head from 'next/head';
 import { getPrismicClient } from '../../services/prismic';
 import styles from './styles.module.scss';
 
-export default function Posts() {
+import { RichText } from 'prismic-dom';
+
+type Post = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  updatedAt: string;
+};
+
+interface PostsProps {
+  posts: Post[];
+}
+
+export default function Posts({ posts }: PostsProps) {
   return (
     <>
       <Head>
@@ -13,41 +26,13 @@ export default function Posts() {
 
       <main className={styles.container}>
         <div className={styles.posts}>
-          <a href="#">
-            <time>13 de dezembro de 2021</time>
-
-            <strong>Creating a Monorepo with Lerna & Yarn Workspaces</strong>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-              reprehenderit, eos cum mollitia optio consequatur architecto aut
-              veniam aperiam fugiat neque voluptatibus eveniet distinctio
-              placeat repudiandae odit necessitatibus inventore libero!
-            </p>
-          </a>
-
-          <a href="#">
-            <time>13 de dezembro de 2021</time>
-
-            <strong>Creating a Monorepo with Lerna & Yarn Workspaces</strong>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-              reprehenderit, eos cum mollitia optio consequatur architecto aut
-              veniam aperiam fugiat neque voluptatibus eveniet distinctio
-              placeat repudiandae odit necessitatibus inventore libero!
-            </p>
-          </a>
-
-          <a href="#">
-            <time>13 de dezembro de 2021</time>
-
-            <strong>Creating a Monorepo with Lerna & Yarn Workspaces</strong>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-              reprehenderit, eos cum mollitia optio consequatur architecto aut
-              veniam aperiam fugiat neque voluptatibus eveniet distinctio
-              placeat repudiandae odit necessitatibus inventore libero!
-            </p>
-          </a>
+          {posts.map((post) => (
+            <a href="#" key={post.slug}>
+              <time>{post.updatedAt}</time>
+              <strong>{post.title}</strong>
+              <p>{post.excerpt}</p>
+            </a>
+          ))}
         </div>
       </main>
     </>
@@ -58,16 +43,31 @@ export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient();
 
   const response = await prismic.query(
-    [Prismic.Predicates.at('document.type', 'publication')],
+    [Prismic.Predicates.at('document.type', 'post')],
     {
-      fetch: ['title', 'content'],
+      fetch: ['post.title', 'post.content'],
       pageSize: 100,
     },
   );
 
-  console.log(response);
+  const posts = response.results.map((post) => {
+    return {
+      slug: post.uid,
+      title: RichText.asText(post.data.title),
+      excerpt:
+        post.data.content.find((content: any) => content.type === 'paragraph')
+          ?.text ?? '',
+      updatedAt: new Date(
+        post.last_publication_date as string,
+      ).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+      }),
+    };
+  });
 
   return {
-    props: {},
+    props: { posts },
   };
 };

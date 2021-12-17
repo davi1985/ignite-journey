@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch --maxWorkers=50%"
+    "test": "jest --maxWorkers=50%"
   },
   "dependencies": {
     "@prismicio/client": "^5.1.0",

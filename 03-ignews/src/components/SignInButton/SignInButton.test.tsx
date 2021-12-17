@@ -1,22 +1,34 @@
 import { render, screen } from '@testing-library/react';
 import { SignInButton } from '.';
+import { mocked } from 'ts-jest/utils';
+import { useSession } from 'next-auth/client';
+
+jest.mock('next-auth/client');
 
 describe('SignInButton', () => {
-  it("should be render the message: 'Sign in with Github' when the property 'isUserLoggedIn' equals false", () => {
+  it('should rendered correctly when user is not authenticated', () => {
+    const useSessionMocked = mocked(useSession);
+
+    useSessionMocked.mockReturnValueOnce([null, false]);
+
     render(<SignInButton />);
 
-    const button = screen.getByRole('button', { name: /sign in with github/i });
-
-    expect(button).toBeInTheDocument();
+    expect(screen.getByText('Sign In with Github')).toBeInTheDocument();
   });
 
-  it("should be render the user name logged when the prop 'isUserLoggedIn' equals true", () => {
+  it('should rendered correctly when user is authenticated', () => {
+    const useSessionMocked = mocked(useSession);
+
+    useSessionMocked.mockReturnValueOnce([
+      {
+        user: { name: 'Jonh Doe', email: 'john.doe@example.com' },
+        expires: 'fake-expires',
+      },
+      false,
+    ]);
+
     render(<SignInButton />);
 
-    screen.logTestingPlaygroundURL();
-
-    const userNameLogged = screen.getByRole('button', { name: /davi silva/i });
-
-    expect(userNameLogged).toBeInTheDocument();
+    expect(screen.getByText('Jonh Doe')).toBeInTheDocument();
   });
 });

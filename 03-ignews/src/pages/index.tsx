@@ -9,7 +9,7 @@ import styles from './home.module.scss';
 type HomeProps = {
   product: {
     priceId: string;
-    amount: number;
+    amount: string;
   };
 };
 
@@ -30,7 +30,7 @@ const Home: NextPage<HomeProps> = ({ product }: HomeProps) => {
 
           <p>
             Get access to all publications <br />
-            for <span>{priceFormatter(product.amount)}</span> month
+            for <span>{product.amount}</span> month
           </p>
 
           <SubscribeButton />
@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const product = {
     priceId: price.id,
-    amount: price.unit_amount / 100,
+    amount: priceFormatter((price.unit_amount as number) / 100),
   };
 
   return {

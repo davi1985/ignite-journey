@@ -5,11 +5,13 @@ import { signIn, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
 
 jest.mock('next-auth/client');
+
 jest.mock('next/router');
 
 describe('SubscribeButton', () => {
-  it('should rendered correctly', () => {
+  it('should rendered correctly ', () => {
     const useSessionMocked = mocked(useSession);
+
     useSessionMocked.mockReturnValueOnce([null, false]);
 
     render(<SubscribeButton />);
@@ -17,8 +19,8 @@ describe('SubscribeButton', () => {
     expect(screen.getByText('Subscribe now')).toBeInTheDocument();
   });
 
-  it('should redirect to sign in when not authenticated', () => {
-    const signInMocked = mocked(signIn);
+  it('should redirect to sing in when not authenticated', async () => {
+    const siginMocked = mocked(signIn);
     const useSessionMocked = mocked(useSession);
 
     useSessionMocked.mockReturnValueOnce([null, false]);
@@ -27,15 +29,15 @@ describe('SubscribeButton', () => {
 
     const subscribeButton = screen.getByText('Subscribe now');
 
-    fireEvent.click(subscribeButton);
+    await fireEvent.click(subscribeButton);
 
-    expect(signInMocked).toHaveBeenCalled();
+    expect(siginMocked).toHaveBeenCalled();
   });
 
-  it('should redirect to posts when user already has a subscription', () => {
+  it('should redirect to posts when user already to have an subscription ', async () => {
     const useRouterMocked = mocked(useRouter);
     const useSessionMocked = mocked(useSession);
-    const pushMocked = jest.fn();
+    const pushMock = jest.fn();
 
     useSessionMocked.mockReturnValueOnce([
       {
@@ -49,16 +51,16 @@ describe('SubscribeButton', () => {
       false,
     ]);
 
-    useRouterMocked.mockReturnValueOnce({
-      push: pushMocked,
+    useRouterMocked.mockReturnValue({
+      push: pushMock,
     } as any);
 
     render(<SubscribeButton />);
 
     const subscribeButton = screen.getByText('Subscribe now');
 
-    fireEvent.click(subscribeButton);
+    await fireEvent.click(subscribeButton);
 
-    expect(pushMocked).toHaveBeenCalled();
+    expect(pushMock).toHaveBeenCalledWith('/posts');
   });
 });

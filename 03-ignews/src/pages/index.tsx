@@ -1,8 +1,9 @@
-import type { GetStaticProps, NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { SubscribeButton } from '../components/SubscribeButton';
 import { stripe } from '../services/stripe';
 import { priceFormatter } from '../utils/utils';
+import Image from 'next/image';
 
 import styles from './home.module.scss';
 
@@ -36,7 +37,12 @@ const Home: NextPage<HomeProps> = ({ product }: HomeProps) => {
           <SubscribeButton />
         </section>
 
-        <img src="/images/avatar.svg" alt="Girl coding" />
+        <Image
+          src="/images/avatar.svg"
+          alt="Girl coding"
+          width={400}
+          height={500}
+        />
       </main>
     </>
   );

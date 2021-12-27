@@ -1,15 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import { mocked } from 'ts-jest/utils';
+import { mocked } from 'jest-mock';
 import Posts, { getStaticProps } from '../../pages/posts';
-import { stripe } from '../../services/stripe';
 import { getPrismicClient } from '../../services/prismic';
 
-const posts: {
-  slug: string;
-  title: string;
-  excerpt: string;
-  updatedAt: string;
-}[] = [
+const posts = [
   {
     slug: 'my-new-post',
     title: 'My new Post',

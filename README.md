@@ -33,4 +33,4 @@
 
 <h3>Chapter 06</h3>
 
-- [ ] Estratégias de deploy no ReactJS
+- [x] Estratégias de deploy no ReactJS

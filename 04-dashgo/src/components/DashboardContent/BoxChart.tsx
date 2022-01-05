@@ -6,7 +6,7 @@ type BoxChartsProps = {
 }
 
 export const BoxCharts = ({ title }: BoxChartsProps) => (
-  <Box padding="8" bg="gray.800" borderRadius={8} pb="4">
+  <Box padding={['4', '8']} bg="gray.800" borderRadius={8} pb="4">
     <Text fontSize="lg" mb="4">
       {title}
     </Text>

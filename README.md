@@ -22,7 +22,7 @@
 
 <h3>Chapter 04</h3>
 
-- [ ] Contruindo interfaces do futuro
+- [x] Contruindo interfaces do futuro
 - [ ] Data fetching e cache local
 - [ ] Autenticação e autorização
 

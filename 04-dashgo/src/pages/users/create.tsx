@@ -1,3 +1,5 @@
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import {
   Box,
   Divider,
@@ -12,50 +14,109 @@ import Link from 'next/link'
 import { Input } from '../../components/Form/Input'
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
+import { createUserSchema } from '../../utils/yup/schemas'
 
-const CreateUser = () => (
-  <Box>
-    <Header />
+type CreateUserFormData = {
+  name: string
+  email: string
+  password: string
+  password_confirmation: string
+}
 
-    <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
-      <Sidebar />
+const CreateUser = () => {
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(createUserSchema),
+  })
 
-      <Box flex="1" borderRadius="8" bg="gray.800" p={['6', '8']}>
-        <Heading size="lg" fontWeight="normal">
-          Criar usuário
-        </Heading>
+  const handleCreateUser: SubmitHandler<CreateUserFormData> = async (
+    values,
+  ) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000))
 
-        <Divider my="6" borderColor="gray.700" />
+    console.log(values)
+  }
 
-        <VStack spacing="8">
-          <SimpleGrid minChildWidth="240px" spacing={['6', '8']} w="100%">
-            <Input name="name" label="Nome Completo" />
-            <Input name="email" label="E-mail" type="email" />
-          </SimpleGrid>
+  const { errors } = formState
 
-          <SimpleGrid minChildWidth="240px" spacing={['6', '8']} w="100%">
-            <Input name="password" label="Senha" type="password" />
-            <Input
-              name="password_confirmation"
-              label="Confirmação da Senha"
-              type="password"
-            />
-          </SimpleGrid>
-        </VStack>
+  return (
+    <Box>
+      <Header />
 
-        <Flex mt="8" justify="flex-end">
-          <HStack spacing="4">
-            <Link href={'/users'} passHref>
-              <Button as="a" colorScheme="whiteAlpha">
-                Cancelar
+      <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
+        <Sidebar />
+
+        <Box
+          as="form"
+          onSubmit={handleSubmit(handleCreateUser)}
+          flex="1"
+          borderRadius="8"
+          bg="gray.800"
+          p={['6', '8']}
+        >
+          <Heading size="lg" fontWeight="normal">
+            Criar usuário
+          </Heading>
+
+          <Divider my="6" borderColor="gray.700" />
+
+          <VStack spacing="8">
+            <SimpleGrid minChildWidth="240px" spacing={['6', '8']} w="100%">
+              <Input
+                error={errors.name}
+                {...register('name')}
+                name="name"
+                label="Nome Completo"
+              />
+
+              <Input
+                error={errors.email}
+                {...register('email')}
+                name="email"
+                label="E-mail"
+                type="email"
+              />
+            </SimpleGrid>
+
+            <SimpleGrid minChildWidth="240px" spacing={['6', '8']} w="100%">
+              <Input
+                error={errors.password}
+                {...register('password')}
+                name="password"
+                label="Senha"
+                type="password"
+              />
+
+              <Input
+                error={errors.password_confirmation}
+                {...register('password_confirmation')}
+                name="password_confirmation"
+                label="Confirmação da Senha"
+                type="password"
+              />
+            </SimpleGrid>
+          </VStack>
+
+          <Flex mt="8" justify="flex-end">
+            <HStack spacing="4">
+              <Link href={'/users'} passHref>
+                <Button as="a" colorScheme="whiteAlpha">
+                  Cancelar
+                </Button>
+              </Link>
+
+              <Button
+                type="submit"
+                colorScheme="pink"
+                isLoading={formState.isSubmitting}
+              >
+                Salvar
               </Button>
-            </Link>
-            <Button colorScheme="pink">Salvar</Button>
-          </HStack>
-        </Flex>
-      </Box>
-    </Flex>
-  </Box>
-)
+            </HStack>
+          </Flex>
+        </Box>
+      </Flex>
+    </Box>
+  )
+}
 
 export default CreateUser

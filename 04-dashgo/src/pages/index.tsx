@@ -3,9 +3,9 @@ import { Input } from '../components/Form/Input'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import { sigInFormSchema } from '../utils/yup/sigInFormSchema'
+import { sigInFormSchema } from '../utils/yup/schemas'
 
-type SignInFormDate = {
+type SignInFormData = {
   email: string
   password: string
 }
@@ -15,7 +15,7 @@ export default function SignIn() {
     resolver: yupResolver(sigInFormSchema),
   })
 
-  const handleSignIn: SubmitHandler<SignInFormDate> = async (values) => {
+  const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
     console.log(values)

@@ -30,9 +30,16 @@ import { User } from '../../services/hooks/users/types'
 import { getUsers, useUsers } from '../../services/hooks/users/useUsers'
 import { queryClient } from '../../services/queryClient'
 
-const UsersList = () => {
+type UserListProps = {
+  users: User[]
+  totalCount: number
+}
+
+const UsersList = ({ users, totalCount }: UserListProps) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const { data, isLoading, error, isFetching } = useUsers(currentPage)
+  const { data, isLoading, error, isFetching } = useUsers(currentPage, {
+    initialData: users,
+  })
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -168,10 +175,10 @@ const UsersList = () => {
 
 export default UsersList
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const { users, totalCount } = await getUsers(1)
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { users, totalCount } = await getUsers(1)
 
-//   return {
-//     props: { users, totalCount },
-//   }
-// }
+  return {
+    props: { users, totalCount },
+  }
+}

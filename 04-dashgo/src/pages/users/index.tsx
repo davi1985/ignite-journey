@@ -16,6 +16,7 @@ import {
   Spinner,
   Link as ChakraLink,
 } from '@chakra-ui/react'
+import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -25,10 +26,11 @@ import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
 import { api } from '../../services/api'
-import { useUsers } from '../../services/hooks/users/useUsers'
+import { User } from '../../services/hooks/users/types'
+import { getUsers, useUsers } from '../../services/hooks/users/useUsers'
 import { queryClient } from '../../services/queryClient'
 
-const UserList = () => {
+const UsersList = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const { data, isLoading, error, isFetching } = useUsers(currentPage)
 
@@ -164,4 +166,12 @@ const UserList = () => {
   )
 }
 
-export default UserList
+export default UsersList
+
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const { users, totalCount } = await getUsers(1)
+
+//   return {
+//     props: { users, totalCount },
+//   }
+// }

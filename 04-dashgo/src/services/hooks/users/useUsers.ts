@@ -1,21 +1,6 @@
-import { useQuery } from 'react-query'
+import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query'
 import { api } from '../../api'
-
-type User = {
-  id: string
-  name: string
-  email: string
-  createdAt: string
-}
-
-type UsersResponse = {
-  users: User[]
-}
-
-type GetUsersResponse = {
-  totalCount: number
-  users: User[]
-} // it's equatl to Promise<User[] & { totalCount: number }
+import { GetUsersResponse, UsersResponse } from './types'
 
 export const getUsers = async (page: number): Promise<GetUsersResponse> => {
   const { data, headers } = await api.get<UsersResponse>('/users', {

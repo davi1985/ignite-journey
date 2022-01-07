@@ -42,6 +42,6 @@ export const getUsers = async (page: number): Promise<GetUsersResponse> => {
 
 export const useUsers = (page: number) => {
   return useQuery(['users', page], () => getUsers(page), {
-    staleTime: 1000 * 5,
+    staleTime: 1000 * 60 * 10, // 10 minutes
   })
 }

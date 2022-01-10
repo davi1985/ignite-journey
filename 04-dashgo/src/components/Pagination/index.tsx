@@ -47,8 +47,14 @@ export const Pagination = ({
       spacing="6"
     >
       <Box>
-        <strong>{currentPage}</strong> - <strong>{registersPerPage}</strong> de{' '}
-        <strong>{totalCountOfRegisters}</strong>
+        <strong>{currentPage * registersPerPage - registersPerPage + 1}</strong>{' '}
+        -{' '}
+        <strong>
+          {currentPage === lastPage
+            ? totalCountOfRegisters
+            : registersPerPage * currentPage}
+        </strong>{' '}
+        de <strong>{totalCountOfRegisters}</strong>
       </Box>
 
       <Stack direction="row" spacing="2">

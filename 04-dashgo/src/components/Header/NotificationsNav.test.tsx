@@ -5,8 +5,6 @@ describe('<Header />', () => {
   it('should render correctly', () => {
     render(<NotificationsNav />)
 
-    screen.logTestingPlaygroundURL()
-
     const iconsNotifications = screen.getByTestId('notifications-icons')
 
     expect(iconsNotifications).toBeInTheDocument()

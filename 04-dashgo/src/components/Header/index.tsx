@@ -16,6 +16,7 @@ export const Header = () => {
 
   return (
     <Flex
+      data-testid="header"
       as="header"
       maxWidth={1480}
       w="100%"

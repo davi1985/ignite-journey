@@ -5,6 +5,6 @@ describe('<Header />', () => {
   it('should render correctly', () => {
     render(<Header />)
 
-    screen.logTestingPlaygroundURL()
+    expect(screen.getByTestId('header')).toBeInTheDocument()
   })
 })

@@ -1,0 +1,40 @@
+.container {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  max-width: 320px;
+  width: 100%;
+  margin: auto;
+}
+
+.input,
+.button {
+  padding: 1rem;
+  border: none;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.input {
+  background: #ddd;
+  font-size: 1rem;
+}
+
+.input + .input {
+  margin-top: 1rem;
+}
+
+.button {
+  margin-top: 1rem;
+  font-size: 1rem;
+  background: #e53e3e;
+  transition: filter 0.3s;
+  color: white;
+}
+
+.button:hover {
+  filter: brightness(0.9);
+}

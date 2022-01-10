@@ -1,5 +1,5 @@
-import { DashBoardContent } from '../components/DashboardContent'
+import { DashboardContent } from '../components/DashboardContent'
 
-const Dashboard = () => <DashBoardContent />
+const Dashboard = () => <DashboardContent />
 
 export default Dashboard

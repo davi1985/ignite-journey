@@ -3,7 +3,7 @@ import { Header } from '../Header'
 import { Sidebar } from '../Sidebar'
 import { BoxCharts } from './BoxChart'
 
-export const DashBoardContent = () => (
+export const DashboardContent = () => (
   <Flex direction="column" h="100vh">
     <Header />
 

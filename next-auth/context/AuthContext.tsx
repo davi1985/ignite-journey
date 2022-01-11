@@ -12,7 +12,7 @@ import {
 export const AuthContext = createContext({} as AuthContextData);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User>();
 
   const isAuthenticated = !!user;
 

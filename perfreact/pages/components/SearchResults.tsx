@@ -1,14 +1,6 @@
 import { useMemo } from "react";
+import { SearchResultsProps } from "../../@types";
 import { ProductItem } from "./ProductItem";
-
-type SearchResultsProps = {
-  results: Array<{
-    id: number;
-    price: number;
-    title: string;
-  }>;
-  onAddToWishlist: (id: number) => void;
-};
 
 export function SearchResults({
   results,
@@ -21,6 +13,8 @@ export function SearchResults({
 
   return (
     <div>
+      <h2>{totalPrice}</h2>
+
       {results.map((product) => {
         return (
           <ProductItem

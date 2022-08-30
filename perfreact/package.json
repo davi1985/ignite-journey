@@ -10,13 +10,16 @@
     "server": "json-server -d 750 -w -p 3333 ./server.js"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^12.2.5",
     "next": "12.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-virtualized": "^9.22.3"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.40",
+    "@types/react-virtualized": "^9.21.21",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "json-server": "^0.17.0",

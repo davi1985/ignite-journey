@@ -28,7 +28,7 @@
 
 <h3>Chapter 05</h3>
 
-- [ ] Performando app com ReactJS
+- [x] Performando app com ReactJS
 - [x] Testes unitários no React
 
 <h3>Chapter 06</h3>
